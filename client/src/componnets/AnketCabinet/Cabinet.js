@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Form.(props) {
+function Cabinet({info}) {
   return (
     <div>
-      
+     
     </div>
   );
 }
 
-export default Form.;
+export default Cabinet;

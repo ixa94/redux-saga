@@ -1,20 +1,29 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import studentsRouter from './routes/students.js'
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import usersRouter from './routes/users.js';
 
-const app = express()
+const app = express();
 
-mongoose.connect('mongodb://localhost:27017/StudentsDB', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/UsersDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-const Student = mongoose.model('Student', {
+const User = mongoose.model('User', {
   name: { type: String, trim: true },
-  age: Number
-})
+  age: { type: Number },
+  height: { type: Number },
+  sex: { type: String },
+});
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-app.use(cors())
-app.use('/students', studentsRouter)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+app.use('/users', usersRouter);
 
-export { app, Student }
+export { app, User };
+
+
+
+
